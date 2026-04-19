@@ -68,23 +68,6 @@ How effectively can deep learning models classify galaxy morphology, and which m
 Grad-CAM was used to visualize model focus areas.  
 Models consistently highlighted meaningful galaxy structures, improving trust in predictions.
 
----
-
-## 📊 Visual Results  
-
-### Model Comparison  
-![Comparison](graphs/comparison.png)
-
-### ROC Curve  
-![ROC](graphs/roc_all_models.png)
-
-### Confusion Matrix  
-![Confusion Matrix](graphs/cnn_cm.png)
-
-### Grad-CAM  
-![GradCAM](graphs/gradcam.png)
-
----
 
 ## 📌 Key Findings  
 - DeiT Transformer achieved the best performance  
