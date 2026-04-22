@@ -28,7 +28,7 @@ Robustness to label noise (GZ2 threshold lowered from 0.8 → 0.5):
 
 DeiT degrades less than EfficientNet on both metrics, and both pretrained models keep AUC > 0.96 under noisier labels.
 
-See [`report/24099418_Final_report.docx`](report/24099418_Final_report.docx) for the full write-up and [`results/final_results_all_models.json`](results/final_results_all_models.json) for machine-readable metrics including per-class precision/recall/F1.
+See [`report/24099418_Final_report.docx`](24099418_Final_report.docx) for the full write-up and [`results/final_results_all_models.json`](final_results_all_models.json) for machine-readable metrics including per-class precision/recall/F1.
 
 ---
 
