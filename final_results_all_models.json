@@ -1,0 +1,111 @@
+{
+  "project": "Galaxy Morphology Classification using Deep Learning",
+  "dataset": "Galaxy Zoo 2 (GZ2)",
+  "task": "Binary classification: elliptical vs spiral",
+  "random_seed": 42,
+  "clean_dataset": {
+    "vote_fraction_threshold": 0.8,
+    "total_balanced_size": 53978,
+    "train_size": 37784,
+    "val_size": 8097,
+    "test_size": 8097,
+    "class_counts_before_balance": {
+      "spiral": 30979,
+      "elliptical": 26989
+    }
+  },
+  "noisy_dataset": {
+    "vote_fraction_threshold": 0.5,
+    "total_balanced_size": 136574,
+    "train_size": 95601,
+    "val_size": 20486,
+    "test_size": 20487
+  },
+  "models_clean_test": {
+    "CustomCNN": {
+      "accuracy": 0.9836976658021489,
+      "roc_auc": 0.9989143613267122,
+      "errors": 132,
+      "image_size": [128, 128],
+      "batch_size": 64,
+      "framework": "tensorflow.keras",
+      "per_class": {
+        "elliptical": {"precision": 0.98, "recall": 0.98, "f1": 0.98},
+        "spiral":     {"precision": 0.98, "recall": 0.98, "f1": 0.98}
+      }
+    },
+    "TunedCNN": {
+      "accuracy": 0.9757935037668273,
+      "roc_auc": 0.9974270839332797,
+      "errors": 196,
+      "image_size": [128, 128],
+      "batch_size": 64,
+      "framework": "tensorflow.keras",
+      "best_hyperparameters": {
+        "filters_block1": 64,
+        "filters_block2": 128,
+        "filters_block3": 256,
+        "dropout1": 0.4,
+        "dropout2": 0.2,
+        "dense_units": 128,
+        "learning_rate": 0.001
+      },
+      "per_class": {
+        "elliptical": {"precision": 0.96, "recall": 0.99, "f1": 0.97},
+        "spiral":     {"precision": 0.99, "recall": 0.96, "f1": 0.97}
+      }
+    },
+    "EfficientNetB0": {
+      "accuracy": 0.9759170062986291,
+      "roc_auc": 0.9973785797888906,
+      "errors": 195,
+      "image_size": [224, 224],
+      "batch_size": 32,
+      "framework": "tensorflow.keras",
+      "training_schedule": {
+        "stage1_epochs": 10,
+        "stage1_learning_rate": 0.001,
+        "stage1_trainable": "head_only",
+        "stage2_epochs": 15,
+        "stage2_learning_rate": 1e-5,
+        "stage2_trainable_layers": "top 30 backbone layers"
+      },
+      "per_class": {
+        "elliptical": {"precision": 0.98, "recall": 0.98, "f1": 0.98},
+        "spiral":     {"precision": 0.98, "recall": 0.98, "f1": 0.98}
+      }
+    },
+    "DeiT_Tiny": {
+      "accuracy": 0.9883907620106213,
+      "roc_auc": 0.9994274680616987,
+      "errors": 94,
+      "image_size": [224, 224],
+      "batch_size": 32,
+      "framework": "pytorch + timm",
+      "model_name": "deit_tiny_patch16_224",
+      "optimiser": "AdamW",
+      "learning_rate": 2e-5,
+      "weight_decay": 0.01,
+      "max_epochs": 8,
+      "early_stopping_patience": 3,
+      "per_class": {
+        "elliptical": {"precision": 1.00, "recall": 0.98, "f1": 0.99},
+        "spiral":     {"precision": 0.98, "recall": 1.00, "f1": 0.99}
+      }
+    }
+  },
+  "noise_experiment": {
+    "EfficientNetB0_noisy": {
+      "accuracy": 0.9033045345829063,
+      "roc_auc": 0.9671565305139007,
+      "errors": 1981,
+      "test_size": 20487
+    },
+    "DeiT_Tiny_noisy": {
+      "accuracy": 0.9211695221359887,
+      "roc_auc": 0.9781019822377149,
+      "errors": 1615,
+      "test_size": 20487
+    }
+  }
+}
