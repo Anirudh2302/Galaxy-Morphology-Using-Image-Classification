@@ -1,0 +1,50 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+env/
+ENV/
+
+# --- Jupyter / notebooks ---
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# --- Model weights / checkpoints (too large for Git) ---
+*.keras
+*.h5
+*.pt
+*.pth
+*.ckpt
+*.pb
+
+# --- Data artefacts that shouldn't be checked in ---
+*.csv.gz
+*.npz
+data/
+dataset/
+
+# --- Logs ---
+*.log
+logs/
+tb_logs/
+runs/
+
+# --- OS / editor cruft ---
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# --- Colab / Drive paths ---
+drive/
+content/
+
+# --- Build output ---
+build/
+dist/
+*.egg-info/
